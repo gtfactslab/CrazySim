@@ -1,0 +1,16 @@
+[submodule "crazyflie-firmware"]
+	path = crazyflie-firmware
+	url = https://github.com/llanesc/crazyflie-firmware.git
+	branch = sitl
+[submodule "crazyflie-lib-python"]
+	path = crazyflie-lib-python
+	url = https://github.com/llanesc/crazyflie-lib-python.git
+	branch = sitl
+[submodule "ros2_ws/src/crazyflie_mpc"]
+	path = ros2_ws/src/crazyflie_mpc
+	url = https://github.com/llanesc/crazyflie_mpc.git
+	branch = main
+[submodule "ros2_ws/src/crazyswarm2"]
+	path = ros2_ws/src/crazyswarm2
+	url = https://github.com/llanesc/crazyswarm2.git
+	branch = sitl
