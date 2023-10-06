@@ -10,12 +10,6 @@ pip install -e .
 ## crazyflie-firmware
 The installation instructions and usage are referenced in the [documentation](https://github.com/llanesc/crazyflie-firmware/blob/sitl/documentation.md) file.
 
-This repository contains a modified repository of the crazyflie firmware for software-in-the-loop support and interfaces with Gazebo Garden.
-
-### Interface Diagram
-
-![sitl_diagram](https://github.com/llanesc/crazyflie-firmware/blob/sitl/docs/images/sitl_diagram.png)
-
 #### Building the code
 First install Gazebo Garden from https://gazebosim.org/docs/garden/install_ubuntu
 
