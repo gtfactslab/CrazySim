@@ -15,6 +15,7 @@ First install Gazebo Garden from https://gazebosim.org/docs/garden/install_ubunt
 
 Run the command to build the firmware and Gazebo plugins.
 ```bash
+cd crazyflie-firmware
 mkdir -p sitl_make/build && cd $_
 cmake ..
 make all
