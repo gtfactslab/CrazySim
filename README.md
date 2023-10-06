@@ -41,7 +41,7 @@ The main code for the MPC script is in
 ```bash
 ros2_ws/crazyflie_mpc/crazyflie_mpc/crazyflie_multiagent_mpc.py
 ```
-The trajectory type can be changed to a horizontal and vertical circle, a helix, or a lemniscate trajectory by changing the variable "trajectory_type" in the CrazyflieMPC class.
+The trajectory type can be changed to a horizontal circle, vertical circle, helix, or a lemniscate trajectory by changing the variable "trajectory_type" in the CrazyflieMPC class.
 
 ## Usage
 ### Start up SITL
