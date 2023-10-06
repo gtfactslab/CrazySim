@@ -29,11 +29,19 @@ colcon build --symlink-install
 ```
 
 ## Configuration
+### Crazyswarm2
 The crazyswarm2  configuration files can be found in 
 ```bash
 ros2_ws/src/crazyswarm2/crazyflie/config/
 ```
 The crazyflies.yaml describes the robots currently being used. If a robot is not in the simulator or hardware, then it can be disabled by setting the enabled parameter to false. A more detailed description for crazyswarm2 configurations can be found [here](https://imrclab.github.io/crazyswarm2/usage.html).
+
+### MPC
+The main code for the MPC script is in
+```bash
+ros2_ws/crazyflie_mpc/crazyflie_mpc/crazyflie_multiagent_mpc.py
+```
+The trajectory type can be changed to a horizontal and vertical circle, a helix, or a lemniscate trajectory by changing the variable "trajectory_type" in the CrazyflieMPC class.
 
 ## Usage
 ### Start up SITL
