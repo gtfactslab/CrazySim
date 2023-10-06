@@ -28,6 +28,12 @@ cd ros2_ws
 colcon build --symlink-install
 ```
 
+## Configuration
+The crazyswarm2  configuration files can be found in 
+```bash
+ros2_ws/src/crazyswarm2/crazyflie/config/
+```
+The crazyflies.yaml describes the robots currently being used. If a robot is not in the simulator or hardware, then it can be disabled by setting the enabled parameter to false. A more detailed description for crazyswarm2 configurations can be found [here](https://imrclab.github.io/crazyswarm2/usage.html).
 
 ## Usage
 ### Start up SITL
