@@ -22,7 +22,7 @@ make all
 ```
 
 ## ROS2 building
-Make sure you have ROS 2 [Galactic](https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html). Then build the ROS 2 workspace.
+Make sure you have ROS 2 [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html). Then build the ROS 2 workspace.
 ```bash
 cd ros2_ws
 colcon build --symlink-install
