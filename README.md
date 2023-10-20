@@ -1,6 +1,8 @@
 # CrazySim: A Software-in-the-Loop Simulator for Nano Quadcopter Fleets
 This code accompanies the work in the ICRA 2024 submission "CrazySim: A Software-in-the-Loop Simulator for Nano Quadcopter Fleets".
 
+![](16cfs.gif)
+
 ## crazyflie-lib-python
 ```bash
 cd crazyflie-lib-python
