@@ -10,6 +10,12 @@ pip install -e .
 ## crazyflie-firmware
 The installation instructions and usage are referenced in the [documentation](https://github.com/llanesc/crazyflie-firmware/blob/sitl/documentation.md) file.
 
+### Dependencies
+Install dependencies by running
+```bash
+pip install Jinja2
+```
+
 #### Building the code
 First install Gazebo Garden from https://gazebosim.org/docs/garden/install_ubuntu
 
