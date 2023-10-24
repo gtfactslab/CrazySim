@@ -3,6 +3,9 @@ This code accompanies the work in the ICRA 2024 submission "CrazySim: A Software
 
 ![](16cfs.gif)
 
+## Supported Platforms
+This simulator is currently only supported on Ubuntu systems with at least 20.04. This is primarily a requirement from Gazebo Sim. The simulator was built, tested, and verified on 22.04 with Gazebo Garden.
+
 ## crazyflie-lib-python
 ```bash
 cd crazyflie-lib-python
