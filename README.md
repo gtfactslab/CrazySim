@@ -6,6 +6,11 @@ This code accompanies the work in the ICRA 2024 submission "CrazySim: A Software
 ## Supported Platforms
 This simulator is currently only supported on Ubuntu systems with at least 20.04. This is primarily a requirement from Gazebo Sim. The simulator was built, tested, and verified on 22.04 with Gazebo Garden.
 
+To install this repository use the recursive command as shown below for HTTPS:
+```bash
+git clone https://github.com/gtfactslab/Llanes_ICRA2024.git --recursive
+```
+
 ## crazyflie-lib-python
 ```bash
 cd crazyflie-lib-python
