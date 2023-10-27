@@ -60,6 +60,8 @@ ros2_ws/crazyflie_mpc/crazyflie_mpc/crazyflie_multiagent_mpc.py
 The trajectory type can be changed to a horizontal circle, vertical circle, helix, or a lemniscate trajectory by changing the variable "trajectory_type" in the CrazyflieMPC class.
 
 ## Usage
+Currently, users have to restart Gazebo after each CFLib connect and disconnect cycle. Supporting a restart cycle without restarting Gazebo is on the list of things to do.
+
 ### Start up SITL
 Open a terminal and run
 ```bash
