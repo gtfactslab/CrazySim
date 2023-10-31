@@ -46,8 +46,8 @@ sudo apt install libboost-program-options-dev libusb-1.0-0-dev
 pip3 install rowan transforms3d
 sudo apt install ros-humble-tf-transformations
 ```
-If you want to run the MPC code then you will need the following:
-Acados can be installed by following their [documentation](https://docs.acados.org/installation/index.html).
+
+If you want to run the MPC code then you will need Acados. Acados can be installed by following their [documentation](https://docs.acados.org/installation/index.html).
 
 Then build the ROS 2 workspace.
 ```bash
