@@ -21,21 +21,10 @@ pip install -e .
 The installation instructions and usage are referenced in the [documentation](https://github.com/llanesc/crazyflie-firmware/blob/sitl/documentation.md) file.
 
 ### Dependencies
-#### CrazySim
 Install dependencies using the code below.
 ```bash
 pip install Jinja2
 ```
-
-#### CrazySwarm2 and MPC code
-Install the following for Crazyswarm2:
-```bash
-sudo apt install libboost-program-options-dev libusb-1.0-0-dev
-pip3 install rowan transforms3d
-sudo apt install ros-humble-tf-transformations
-```
-If you want to run the MPC code then you will need the following:
-Acados can be installed by following their [documentation](https://docs.acados.org/installation/index.html).
 
 #### Building the code
 First install Gazebo Garden from https://gazebosim.org/docs/garden/install_ubuntu
@@ -48,23 +37,32 @@ cmake ..
 make all
 ```
 
-## ROS2 building
-Make sure you have ROS 2 [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html). Then build the ROS 2 workspace.
+## Crazyswarm2 and MPC code
+Make sure you have ROS 2 [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html). 
+
+Install the following for Crazyswarm2:
+```bash
+sudo apt install libboost-program-options-dev libusb-1.0-0-dev
+pip3 install rowan transforms3d
+sudo apt install ros-humble-tf-transformations
+```
+If you want to run the MPC code then you will need the following:
+Acados can be installed by following their [documentation](https://docs.acados.org/installation/index.html).
+
+Then build the ROS 2 workspace.
 ```bash
 cd ros2_ws
 colcon build --symlink-install
 ```
 
-## Configuration
-### Crazyswarm2
+### Configuration
 The crazyswarm2  configuration files can be found in 
 ```bash
 ros2_ws/src/crazyswarm2/crazyflie/config/
 ```
 The crazyflies.yaml describes the robots currently being used. If a robot is not in the simulator or hardware, then it can be disabled by setting the enabled parameter to false. A more detailed description for crazyswarm2 configurations can be found [here](https://imrclab.github.io/crazyswarm2/usage.html).
 
-### MPC
-The main code for the MPC script is in
+The main code for the MPC script is in the following:
 ```bash
 ros2_ws/crazyflie_mpc/crazyflie_mpc/crazyflie_multiagent_mpc.py
 ```
