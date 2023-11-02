@@ -5,7 +5,7 @@
 [submodule "crazyflie-lib-python"]
 	path = crazyflie-lib-python
 	url = https://github.com/llanesc/crazyflie-lib-python.git
-	branch = sitl
+	branch = sitl-release
 [submodule "ros2_ws/src/crazyflie_mpc"]
 	path = ros2_ws/src/crazyflie_mpc
 	url = https://github.com/llanesc/crazyflie_mpc.git
