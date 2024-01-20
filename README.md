@@ -81,17 +81,17 @@ We can then run the firmware instance and spawn the models with Gazebo using a s
 
 #### Option 1: Spawning a single crazyflie model with initial position (x = 0, y = 0)
 ```bash
-bash tools/simulators/gz/sitl_singleagent.sh -m crazyflie -x 0 -y 0
+bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_singleagent.sh -m crazyflie -x 0 -y 0
 ```
 
 #### Option 2: Spawning 8 crazyflie models to form a perfect square
 ```bash
-bash tools/simulators/gz/sitl_multiagent_square.sh -n 8 -m crazyflie
+bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_square.sh -n 8 -m crazyflie
 ```
 
 #### Option 3: Spawning multiple crazyflie models with positions defined in the *agents.txt* file. New vehicles are defined by adding a new line with comma deliminated initial position *x,y*.
 ```bash
-bash tools/simulators/gz/sitl_multiagent_text.sh -m crazyflie
+bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_text.sh -m crazyflie
 ```
 
 ### Start Crazyswarm2
