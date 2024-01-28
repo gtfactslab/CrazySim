@@ -102,9 +102,9 @@ ros2 launch crazyflie launch.py backend:=cflib
 
 ### Start MPC code
 ### 
-Launch the Crazyflie MPC demonstration.
+Run the Crazyflie MPC demonstration with the code below. The argument `n_agents` can be modified for the number of agents in your environment.
 ```bash
-ros2 launch crazyflie_mpc crazyflie_multiagent_mpc_launch.py
+ros2 run crazyflie_mpc crazyflie_multiagent_mpc --n_agents=1
 ```
 
 Using the command line publisher we can command all vehicles to take off using MPC.
@@ -116,3 +116,10 @@ Using the command line publisher we can command all vehicles to start the trajec
 ```bash
 ros2 topic pub -t 50 -r 50 /all/mpc_trajectory std_msgs/msg/Empty
 ```
+
+Using the command line publisher we can command all vehicles to stop the trajectory and hover.
+```bash
+ros2 topic pub -t 50 -r 50 /all/mpc_hover std_msgs/msg/Empty
+```
+
+We also implemented a MPC land feature, but it's still experimental and may result in crashing the drone.
