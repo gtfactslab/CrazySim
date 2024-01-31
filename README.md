@@ -1,4 +1,4 @@
-# CrazySim: A Software-in-the-Loop Simulator for Nano Quadcopter Fleets
+# CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor
 This code accompanies the work in the ICRA 2024 submission "CrazySim: A Software-in-the-Loop Simulator for Nano Quadcopter Fleets".
 
 ![](16cfs.gif)
