@@ -31,6 +31,8 @@ https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/88fdad50-59a2-4810
 
 
 ## crazyflie-firmware
+[WARNING] This is a modified version of the firmware for software-in-the-loop. At this time do not use this firmware for your hardware. SITL integration with Kbuild is being developed for cross-platform building.
+
 The installation instructions and usage are referenced in the [documentation](https://github.com/llanesc/crazyflie-firmware/blob/sitl/documentation.md) file.
 
 ### Dependencies
