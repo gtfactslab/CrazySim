@@ -17,6 +17,16 @@ cd crazyflie-lib-python
 pip install -e .
 ```
 
+## crazyflie-clients-python [Optional]
+If you want to test a single Crazyflie with a custom crazyflie-clients-python for SITL, then run the following command in your terminal. If pip reinstalls cflib, then you may have to remove it and install from source above.
+```bash
+cd crazyflie-clients-python
+pip install -e .
+```
+
+https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/88fdad50-59a2-4810-bfb2-43c54308ce70
+
+
 ## crazyflie-firmware
 The installation instructions and usage are referenced in the [documentation](https://github.com/llanesc/crazyflie-firmware/blob/sitl/documentation.md) file.
 
