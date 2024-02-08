@@ -18,7 +18,7 @@ pip install -e .
 ```
 
 ## crazyflie-clients-python [Optional]
-[WARNING] This modified client package is only for software-in-the-loop and has several features disabled for hardware. Do not use this package for your hardware.
+[WARNING] This modified client package is only for software-in-the-loop and has several hardware specific features disabled. Do not use this package for your hardware.
 
 If you want to test a single Crazyflie with a custom crazyflie-clients-python for SITL, then run the following command in your terminal. If pip reinstalls cflib, then you may have to remove it and install from source above.
 
