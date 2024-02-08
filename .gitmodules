@@ -18,3 +18,7 @@
 	path = ros2_ws/src/motion_capture_tracking
 	url = https://github.com/IMRCLab/motion_capture_tracking.git
 	branch = ros2
+[submodule "crazyflie-clients-python"]
+	path = crazyflie-clients-python
+	url = https://github.com/llanesc/crazyflie-clients-python.git
+	branch = sitl-release
