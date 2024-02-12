@@ -1,8 +1,23 @@
 # CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor
-This code accompanies the work in the ICRA 2024 submission "CrazySim: A Software-in-the-Loop Simulator for Nano Quadcopter Fleets".
+This code accompanies the work in the ICRA 2024 accepted paper "CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor" [1]. CrazySim is a simulator platform that runs Crazyflie firmware in a simulation state on a desktop machine with integrated communication with Gazebo sensors and physics engine. The simulated Crazyflie firmware is intended to communicate with a custom Crazyflie Python library (CFLib) provided in this code. This enables simulating the behavior of CFLib scripts that are intended to control single or multiple Crazyflies in a real hardware demonstration. With CFLib communication capabilities, users can choose to use CrazySwarm2 with CFLib as the backend for a ROS 2 interface with the simulator. In this code we also provide a case study that uses model predictive control (MPC) using Acados for decentralized control of Crazyflie drone fleets.
 
 ![](16cfs.gif)
 
+## References
+
+[1] C. Llanes, Z. Kakish, K. Williams, and S. Coogan, “CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor,” To appear in 2024
+IEEE International Conference on Robotics and Automation (ICRA), 2024.
+
+
+```console
+@INPROCEEDINGS{LlanesICRA2024,
+author = {Llanes, Christian and Kakish, Zahi, and Williams, Kyle and Coogan, Samuel},
+booktitle = {2024 IEEE International Conference on Robotics and Automation (ICRA)}, 
+title = {CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor},
+year = {2024},
+pubstate={forthcoming}
+}
+```
 ## Supported Platforms
 This simulator is currently only supported on Ubuntu systems with at least 20.04. This is primarily a requirement from Gazebo Sim. The simulator was built, tested, and verified on 22.04 with Gazebo Garden.
 
