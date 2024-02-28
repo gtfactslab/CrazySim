@@ -11,7 +11,7 @@ IEEE International Conference on Robotics and Automation (ICRA), 2024.
 
 ```console
 @INPROCEEDINGS{LlanesICRA2024,
-author = {Llanes, Christian and Kakish, Zahi, and Williams, Kyle and Coogan, Samuel},
+author = {Llanes, Christian and Kakish, Zahi and Williams, Kyle and Coogan, Samuel},
 booktitle = {2024 IEEE International Conference on Robotics and Automation (ICRA)}, 
 title = {CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor},
 year = {2024},
