@@ -70,7 +70,7 @@ cmake ..
 make all
 ```
 
-## Usage
+## How to use
 Currently, users have to restart Gazebo after each CFLib connect and disconnect cycle. Supporting a restart cycle without restarting Gazebo is on the list of things to do.
 
 ### Start up SITL
