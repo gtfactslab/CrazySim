@@ -79,7 +79,12 @@ Open a terminal and run
 cd crazyflie-firmware
 ```
 
-We can then run the firmware instance and spawn the models with Gazebo using a single launch script.
+We can then run the firmware instance and spawn the models with Gazebo using a launch script. All launch scripts require a model argument `-m`. All currently implemented models are tabulated below.
+
+| Models | Description |
+| --- | --- |
+| crazyflie | The default Crazyflie 2.1. |
+| crazyflie_thrust_upgrade | The Crazyflie 2.1 with thrust upgrade bundle. |
 
 #### Option 1: Spawning a single crazyflie model with initial position (x = 0, y = 0)
 ```bash
@@ -129,7 +134,7 @@ The main code for the MPC script is in the following:
 ```bash
 ros2_ws/crazyflie_mpc/crazyflie_mpc/crazyflie_multiagent_mpc.py
 ```
-The trajectory type can be changed to a horizontal circle, vertical circle, helix, or a lemniscate trajectory by changing the variable "trajectory_type" in the CrazyflieMPC class.
+The trajectory type can be changed to a horizontal circle, vertical circle, helix, or a lemniscate trajectory by changing the variable "trajectory_type" in the CrazyflieMPC class. There is also a motors variable in the CrazyflieMPC class that can be changed based on if you defined the crazyflie or crazyflie_thrust_upgrade model.
 
 ### Start up the Firmware
 Start up the firmware with any of the 3 launch script options. Below we demonstrate 4 Crazyflies in a square formation.
@@ -152,17 +157,23 @@ ros2 run crazyflie_mpc crazyflie_multiagent_mpc --n_agents=4
 
 Using the command line publisher we can command all vehicles to take off using MPC.
 ```bash
-ros2 topic pub -t 50 -r 50 /all/mpc_takeoff std_msgs/msg/Empty
+ros2 topic pub -t 1 /all/mpc_takeoff std_msgs/msg/Empty
 ```
 
 Using the command line publisher we can command all vehicles to start the trajectory.
 ```bash
-ros2 topic pub -t 50 -r 50 /all/mpc_trajectory std_msgs/msg/Empty
+ros2 topic pub -t 1 /all/mpc_trajectory std_msgs/msg/Empty
 ```
 
 Using the command line publisher we can command all vehicles to stop the trajectory and hover.
 ```bash
-ros2 topic pub -t 50 -r 50 /all/mpc_hover std_msgs/msg/Empty
+ros2 topic pub -t 1 /all/mpc_hover std_msgs/msg/Empty
 ```
 
 We also implemented a MPC land feature, but it's still experimental and may result in crashing the drone.
+
+## Versions
+| Version | Description |
+| --- | --- |
+| 1.0 | Initial release |
+| 1.1 | Added receiver thread for CFLib UdpDriver, new thrust upgrade model to Gazebo, and a seperate MPC solver thread with a queue for storing the controls. |
