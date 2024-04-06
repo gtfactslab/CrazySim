@@ -40,13 +40,17 @@ pip install -e .
 
 If you want to test a single Crazyflie with a custom crazyflie-clients-python for SITL, then run the following command in your terminal. If pip reinstalls cflib, then you may have to remove it and install from source above.
 
+Clone the custom crazyflie client.
 ```bash
+git clone https://github.com/llanesc/crazyflie-clients-python
 cd crazyflie-clients-python
-pip install -e .
 ```
 
-https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/88fdad50-59a2-4810-bfb2-43c54308ce70
-
+Switch to the sitl-release branch and install.
+```bash
+git checkout sitl-release
+pip install -e .
+```
 
 ## crazyflie-firmware
 [WARNING] This is a modified version of the firmware for software-in-the-loop. At this time do not use this firmware for your hardware. SITL integration with Kbuild is being developed for cross-platform building.
@@ -102,6 +106,23 @@ bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_te
 ```
 
 Now you can run any CFLib Python script with URI `udp://0.0.0.0:19850`. For drone swarms increment the port for each additional drone.
+
+You can also test a single crazyflie using the custom client if you installed it from the crazyflie-clients-python section.
+
+First start up the custom client.
+```bash
+cfclient
+```
+
+Click on the SITL checkbox, scan, and connect. Once it's connected you can take off and fly using the command based flight controls.
+
+### PID Tuning Example
+One use case for simulating a crazyflie with the client is real time PID tuning. If you created a custom crazyflie with larger batteries, multiple decks, and upgraded motors, then it would be useful to tune the PIDs in a simulator platform before tuning live on hardware. An example of real time PID tuning is shown below.
+
+https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/b865127c-1b0d-4f49-941d-e57aecda9a54
+
+
+
 
 # Crazyswarm2 and Model Predictive Control Case Study
 This section follows the setup of CrazySwarm2 with CrazySim and demonstrating a case study that uses a model predictive controller (MPC) with Acados to track a set of predefined temporally parametrized trajectories.
