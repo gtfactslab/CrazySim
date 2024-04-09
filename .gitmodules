@@ -14,7 +14,3 @@
 	path = ros2_ws/src/crazyswarm2
 	url = https://github.com/llanesc/crazyswarm2.git
 	branch = sitl
-[submodule "ros2_ws/src/motion_capture_tracking"]
-	path = ros2_ws/src/motion_capture_tracking
-	url = https://github.com/IMRCLab/motion_capture_tracking.git
-	branch = ros2
