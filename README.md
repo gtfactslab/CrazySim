@@ -26,7 +26,7 @@ This simulator is currently only supported on Ubuntu systems with at least 20.04
 
 To install this repository use the recursive command as shown below for HTTPS:
 ```bash
-git clone https://github.com/gtfactslab/Llanes_ICRA2024.git --recursive
+git clone https://github.com/gtfactslab/CrazySim.git --recursive
 ```
 
 ## crazyflie-lib-python
