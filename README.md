@@ -58,7 +58,7 @@ pip install -e .
 The installation instructions and usage are referenced in the [documentation](https://github.com/llanesc/crazyflie-firmware/blob/sitl/documentation.md) file.
 
 ### Dependencies
-Run the following commands to isntall dependencies.
+Run the following commands to install dependencies.
 ```bash
 sudo apt install cmake build-essential liblapack-dev libblas-dev
 pip install Jinja2
