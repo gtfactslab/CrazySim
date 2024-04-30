@@ -60,7 +60,7 @@ The installation instructions and usage are referenced in the [documentation](ht
 ### Dependencies
 Run the following commands to install dependencies.
 ```bash
-sudo apt install cmake build-essential liblapack-dev libblas-dev
+sudo apt install cmake build-essential
 pip install Jinja2
 ```
 
