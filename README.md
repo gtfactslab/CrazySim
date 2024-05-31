@@ -112,7 +112,7 @@ First start up the custom client.
 cfclient
 ```
 
-Click on the SITL checkbox, scan, and connect. Once it's connected you can take off and fly using the command based flight controls.
+Click on the scan button, select the UDP interface, and connect. Once it's connected you can take off and fly using the command based flight controls.
 
 ### PID Tuning Example
 One use case for simulating a crazyflie with the client is real time PID tuning. If you created a custom crazyflie with larger batteries, multiple decks, and upgraded motors, then it would be useful to tune the PIDs in a simulator platform before tuning live on hardware. An example of real time PID tuning is shown below.
