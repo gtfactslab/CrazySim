@@ -129,16 +129,11 @@ https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/b865127c-1b0d-4f49
 
 # Crazyswarm2
 
-This section follows the setup of CrazySwarm2 with CrazySim. We provide an example workflow of launching 4 Crazyflies using CrazySim and connect them to Crazyswarm2.
+This section follows the setup of Crazyswarm2 with CrazySim. We provide an example workflow of launching 4 Crazyflies using CrazySim and connect them to Crazyswarm2.
 
-Make sure you have ROS 2 [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html). 
+1. Make sure you have ROS 2 [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html). 
 
-Install the following for Crazyswarm2:
-```bash
-sudo apt install libboost-program-options-dev libusb-1.0-0-dev
-pip3 install rowan transforms3d
-sudo apt install ros-humble-tf-transformations
-```
+2. Follow the [installation](https://imrclab.github.io/crazyswarm2/installation.html) and build instructions for Crazyswarm2.
 
 ### Configuration
 The crazyswarm2  configuration files can be found in 
