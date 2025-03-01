@@ -1,19 +1,24 @@
 # CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor
-This code accompanies the work in the ICRA 2024 accepted paper "CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor" [1]. CrazySim is a simulator platform that runs Crazyflie firmware in a simulation state on a desktop machine with integrated communication with Gazebo sensors and physics engine. The simulated Crazyflie firmware is intended to communicate with a custom Crazyflie Python library ([CFLib](https://github.com/bitcraze/crazyflie-lib-python)) provided in this code. This enables simulating the behavior of CFLib scripts that are intended to control single or multiple Crazyflies in a real hardware demonstration. With CFLib communication capabilities, users can choose to use [CrazySwarm2](https://github.com/IMRCLab/crazyswarm2) with CFLib as the backend for a ROS 2 interface with the simulator. In this code we also provide a case study that uses model predictive control (MPC) using [Acados](https://github.com/acados/acados) for decentralized control of Crazyflie drone fleets.
+This code accompanies the work in the ICRA 2024 paper "CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor" [1]. CrazySim is a simulator platform that runs Crazyflie firmware in a simulation state on a desktop machine with integrated communication with Gazebo sensors and physics engine. The simulated Crazyflie firmware is intended to communicate with a custom Crazyflie Python library ([CFLib](https://github.com/bitcraze/crazyflie-lib-python)) provided in this code. This enables simulating the behavior of CFLib scripts that are intended to control single or multiple Crazyflies in a real hardware demonstration. With CFLib communication capabilities, users can choose to use [CrazySwarm2](https://github.com/IMRCLab/crazyswarm2) with CFLib as the backend for a ROS 2 interface with the simulator. 
 
-![](16cfs.gif)
+## References
 
-## Citation
-If you use CrazySim for an academic publication, then please consider citing our [ICRA2024 paper](https://coogan.ece.gatech.edu/papers/pdf/llanes2024crazysim.pdf) as
+[1] C. Llanes, Z. Kakish, K. Williams, and S. Coogan, “CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor,” To appear in 2024
+IEEE International Conference on Robotics and Automation (ICRA), 2024.
 
 
-```bibtex
+```console
 @INPROCEEDINGS{LlanesICRA2024,
-author = {Llanes, Christian and Kakish, Zahi and Williams, Kyle and Coogan, Samuel},
-booktitle = {2024 IEEE International Conference on Robotics and Automation (ICRA)}, 
-title = {CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor},
-year = {2024}
-}
+  author={Llanes, Christian and Kakish, Zahi and Williams, Kyle and Coogan, Samuel},
+  booktitle={2024 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={12248-12254},
+  keywords={Sockets;Prediction algorithms;Hardware;Robustness;Sensors;Trajectory;Task analysis},
+  doi={10.1109/ICRA57147.2024.10610906}}
+
 ```
 
 # CrazySim Setup
@@ -112,7 +117,7 @@ First start up the custom client.
 cfclient
 ```
 
-Click on the scan button, select the UDP interface, and connect. Once it's connected you can take off and fly using the command based flight controls.
+Click on the SITL checkbox, scan, and connect. Once it's connected you can take off and fly using the command based flight controls.
 
 ### PID Tuning Example
 One use case for simulating a crazyflie with the client is real time PID tuning. If you created a custom crazyflie with larger batteries, multiple decks, and upgraded motors, then it would be useful to tune the PIDs in a simulator platform before tuning live on hardware. An example of real time PID tuning is shown below.
@@ -122,8 +127,9 @@ https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/b865127c-1b0d-4f49
 
 
 
-# Crazyswarm2 and Model Predictive Control Case Study
-This section follows the setup of CrazySwarm2 with CrazySim and demonstrating a case study that uses a model predictive controller (MPC) with Acados to track a set of predefined temporally parametrized trajectories.
+# Crazyswarm2
+
+This section follows the setup of CrazySwarm2 with CrazySim. We provide an example workflow of launching 4 Crazyflies using CrazySim and connect them to Crazyswarm2.
 
 Make sure you have ROS 2 [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html). 
 
@@ -134,26 +140,12 @@ pip3 install rowan transforms3d
 sudo apt install ros-humble-tf-transformations
 ```
 
-If you want to run the MPC code then you will need Acados. Acados can be installed by following their [documentation](https://docs.acados.org/installation/index.html).
-
-Then build the ROS 2 workspace.
-```bash
-cd ros2_ws
-colcon build --symlink-install
-```
-
 ### Configuration
 The crazyswarm2  configuration files can be found in 
 ```bash
 ros2_ws/src/crazyswarm2/crazyflie/config/
 ```
 The crazyflies.yaml describes the robots currently being used. If a robot is not in the simulator or hardware, then it can be disabled by setting the enabled parameter to false. A more detailed description for crazyswarm2 configurations can be found [here](https://imrclab.github.io/crazyswarm2/usage.html).
-
-The main code for the MPC script is in the following:
-```bash
-ros2_ws/crazyflie_mpc/crazyflie_mpc/crazyflie_multiagent_mpc.py
-```
-The trajectory type can be changed to a horizontal circle, vertical circle, helix, or a lemniscate trajectory by changing the variable "trajectory_type" in the CrazyflieMPC class. There is also a motors variable in the CrazyflieMPC class that can be changed based on if you defined the crazyflie or crazyflie_thrust_upgrade model.
 
 ### Start up the Firmware
 Start up the firmware with any of the 3 launch script options. Below we demonstrate 4 Crazyflies in a square formation.
@@ -166,30 +158,6 @@ Make sure that `cf_1`, `cf_2`, `cf_3`, and `cf_4` are enabled in the CrazySwarm2
 ```bash
 ros2 launch crazyflie launch.py backend:=cflib
 ```
-
-### Start MPC code
-### 
-Run the Crazyflie MPC demonstration with the code below. The argument `n_agents` can be modified for the number of agents in your environment. Additionally, the argument `--build_acados` can be defined to compile the Acados optimal control problem.
-```bash
-ros2 run crazyflie_mpc crazyflie_multiagent_mpc --n_agents=4 --build_acados
-```
-
-Using the command line publisher we can command all vehicles to take off using MPC.
-```bash
-ros2 topic pub -t 1 /all/mpc_takeoff std_msgs/msg/Empty
-```
-
-Using the command line publisher we can command all vehicles to start the trajectory.
-```bash
-ros2 topic pub -t 1 /all/mpc_trajectory std_msgs/msg/Empty
-```
-
-Using the command line publisher we can command all vehicles to stop the trajectory and hover.
-```bash
-ros2 topic pub -t 1 /all/mpc_hover std_msgs/msg/Empty
-```
-
-We also implemented a MPC land feature, but it's still experimental and may result in crashing the drone.
 
 ## Versions
 | Version | Description |
