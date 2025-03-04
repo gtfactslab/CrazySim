@@ -154,6 +154,10 @@ Make sure that `cf_1`, `cf_2`, `cf_3`, and `cf_4` are enabled in the CrazySwarm2
 ros2 launch crazyflie launch.py backend:=cflib
 ```
 
+## Model Predictive Control example
+
+The model predictive control example from [1] has been moved to a separate [repository](https://github.com/llanesc/crazyflie-mpc-example).
+
 ## Versions
 | Version | Description |
 | --- | --- |
