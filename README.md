@@ -144,6 +144,46 @@ ros2_ws/src/crazyswarm2/crazyflie/config/
 ```
 The crazyflies.yaml describes the robots currently being used. If a robot is not in the simulator or hardware, then it can be disabled by setting the enabled parameter to false. A more detailed description for crazyswarm2 configurations can be found [here](https://imrclab.github.io/crazyswarm2/usage.html).
 
+For the following demo make the following adjustments to the ***robots*** and ***robot_types*** in crazyflies.yaml.
+
+```YAML
+robots:
+  cf_1:
+      enabled: true
+      uri: udp://0.0.0.0:19850
+      initial_position: [0.0, 0.0, 0.0]
+      type: cf_sim
+
+  cf_2:
+    enabled: true
+    uri: udp://0.0.0.0:19851
+    initial_position: [1.0, 0.0, 0.0]
+    type: cf_sim
+
+  cf_3:
+    enabled: true
+    uri: udp://0.0.0.0:19852
+    initial_position: [0.0, 1.0, 0.0]
+    type: cf_sim 
+
+  cf_4:
+    enabled: true
+    uri: udp://0.0.0.0:19853
+    initial_position: [1.0, 1.0, 0.0]
+    type: cf_sim
+
+robot_types:
+  cf_sim:
+    motion_capture:
+      enabled: false
+    big_quad: false
+    firmware_logging:
+      enabled: true
+      default_topics:
+        pose:
+          frequency: 10
+```
+
 ### Start up the Firmware
 Start up the firmware with any of the 3 launch script options. Below we demonstrate 4 Crazyflies in a square formation.
 ```bash
