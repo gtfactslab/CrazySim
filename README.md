@@ -196,9 +196,14 @@ bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_sq
 ```
 
 ### Start Crazyswarm2
-Make sure that `cf_1`, `cf_2`, `cf_3`, and `cf_4` are enabled in the CrazySwarm2 configuration YAML file. Launch the Crazyswarm2 services with CFLib backend.
+Make sure that `cf_1`, `cf_2`, `cf_3`, and `cf_4` are enabled in the CrazySwarm2 configuration YAML file. Launch the Crazyswarm2 services with the CFLib backend:
 ```bash
 ros2 launch crazyflie launch.py backend:=cflib
+```
+
+Or with the C++ backend:
+```bash
+ros2 launch crazyflie launch.py backend:=cpp
 ```
 
 ## Model Predictive Control example
