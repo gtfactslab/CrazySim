@@ -41,19 +41,12 @@ SETUPTOOLS_SCM_PRETEND_VERSION=0.1.31 pip install -e .
 ```
 
 ## crazyflie-clients-python [Optional]
-[WARNING] This modified client package is only for software-in-the-loop and has several hardware specific features disabled. Do not use this package for your hardware.
+If you want to test a single Crazyflie with crazyflie-clients-python for SITL, then run the following commands in your terminal. If pip reinstalls cflib, then you may have to remove it and install from source above.
 
-If you want to test a single Crazyflie with a custom crazyflie-clients-python for SITL, then run the following command in your terminal. If pip reinstalls cflib, then you may have to remove it and install from source above.
-
-Clone the custom crazyflie client.
+We have verified success with commit [`d649b66`](https://github.com/bitcraze/crazyflie-clients-python/commit/d649b6615a58ac0eb34aa72a4edef4c5d821eeab).
 ```bash
-git clone https://github.com/llanesc/crazyflie-clients-python
+git clone https://github.com/bitcraze/crazyflie-clients-python
 cd crazyflie-clients-python
-```
-
-Switch to the sitl-release branch and install.
-```bash
-git checkout sitl-release
 pip install -e .
 ```
 
