@@ -34,9 +34,10 @@ git clone https://github.com/gtfactslab/CrazySim.git --recursive
 ```
 
 ## crazyflie-lib-python
+The `SETUPTOOLS_SCM_PRETEND_VERSION` variable is needed because the submodule does not contain the git tags required by `setuptools_scm` to determine the package version automatically.
 ```bash
 cd crazyflie-lib-python
-pip install -e .
+SETUPTOOLS_SCM_PRETEND_VERSION=0.1.31 pip install -e .
 ```
 
 ## crazyflie-clients-python [Optional]
@@ -59,7 +60,7 @@ pip install -e .
 ## crazyflie-firmware
 [WARNING] This is a modified version of the crazyflie-firmware for software-in-the-loop. At this time do not use this firmware for your hardware. SITL integration with Kbuild is being developed for cross-platform building.
 
-The installation instructions and usage are referenced in the [documentation](https://github.com/llanesc/crazyflie-firmware/blob/sitl/documentation.md) file.
+The installation instructions and usage are referenced in the [documentation](https://github.com/llanesc/crazyflie-firmware/blob/crazysim/documentation.md) file.
 
 ### Dependencies
 Run the following commands to install dependencies.
@@ -80,7 +81,6 @@ make all
 ```
 
 ## How to use
-Currently, users have to restart Gazebo after each CFLib connect and disconnect cycle. Supporting a restart cycle without restarting Gazebo is on the list of things to do.
 
 ### Start up SITL
 Open a terminal and run
@@ -93,7 +93,7 @@ We can then run the firmware instance and spawn the models with Gazebo using a l
 | Models | Description |
 | --- | --- |
 | crazyflie | The default Crazyflie 2.1. |
-| crazyflie_thrust_upgrade | The Crazyflie 2.1 with thrust upgrade bundle. |
+| crazyflie_thrust_upgrade | The Crazyflie 2.1 with thrust upgrade bundle ([cf2x_T350](https://github.com/utiasDSL/drone-models) parameters). |
 
 #### Option 1: Spawning a single crazyflie model with initial position (x = 0, y = 0)
 ```bash
@@ -133,14 +133,19 @@ https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/b865127c-1b0d-4f49
 
 This section follows the setup of Crazyswarm2 with CrazySim. We provide an example workflow of launching 4 Crazyflies using CrazySim and connect them to Crazyswarm2.
 
-1. Make sure you have ROS 2 [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html). 
+1. Make sure you have ROS 2 [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html).
 
-2. Follow the [installation](https://imrclab.github.io/crazyswarm2/installation.html) and build instructions for Crazyswarm2.
+2. Build the Crazyswarm2 workspace provided as a submodule.
+```bash
+cd crazyswarm2_ws
+colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+source install/setup.bash
+```
 
 ### Configuration
-The crazyswarm2  configuration files can be found in 
+The crazyswarm2 configuration files can be found in
 ```bash
-ros2_ws/src/crazyswarm2/crazyflie/config/
+crazyswarm2_ws/src/crazyswarm2/crazyflie/config/
 ```
 The crazyflies.yaml describes the robots currently being used. If a robot is not in the simulator or hardware, then it can be disabled by setting the enabled parameter to false. A more detailed description for crazyswarm2 configurations can be found [here](https://imrclab.github.io/crazyswarm2/usage.html).
 
@@ -175,7 +180,7 @@ robots:
 robot_types:
   cf_sim:
     motion_capture:
-      enabled: false
+      tracking: "vendor"
     big_quad: false
     firmware_logging:
       enabled: true
@@ -206,3 +211,4 @@ The model predictive control example from [1] has been moved to a separate [repo
 | 1.0 | Initial release |
 | 1.1 | Added receiver thread for CFLib UdpDriver, new thrust upgrade model to Gazebo, and a seperate MPC solver thread with a queue for storing the controls. |
 | 1.2 | Merge crazyflie-firmware with commits up to [dbb09b5](https://github.com/bitcraze/crazyflie-firmware/commit/dbb09b5ca16f0ddf63e98d2c44d247a3aa15f056), update submodule motion_capture_tracking to version 1.0.5, fixed Gazebo sending external pose to firmware (wasn't receiving orientation), cleaned up launch scripts, removed some firmware module copies for sitl. |
+| 1.3 | Rewritten CFLib UDP driver with threaded receiver and scan_interface for auto-discovery on ports 19850-19859, activity-based connection detection in Gazebo plugin, added SITL deck and battery parameter stubs for cfclient compatibility, updated thrust upgrade model with cf2x_T350 parameters, added Crazyswarm2 as a submodule, added UDP support for the Crazyswarm2 C++ backend, added Crazyswarm2 attitude setpoints. |
