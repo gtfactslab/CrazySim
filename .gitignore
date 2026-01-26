@@ -1,1 +1,6 @@
 .vscode/
+
+# Ignore crazyswarm2_ws build artifacts, keep src
+crazyswarm2_ws/*
+!crazyswarm2_ws/src/
+*.csv
