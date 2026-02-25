@@ -5,8 +5,8 @@ This code accompanies the work in the ICRA 2024 paper "CrazySim: A Software-in-t
 
 ## References
 
-[1] C. Llanes, Z. Kakish, K. Williams, and S. Coogan, “CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor,” To appear in 2024
-IEEE International Conference on Robotics and Automation (ICRA), 2024.
+[1] C. Llanes, Z. Kakish, K. Williams, and S. Coogan, “CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor,” 
+2024 IEEE International Conference on Robotics and Automation (ICRA), 2024.
 
 
 ```console
