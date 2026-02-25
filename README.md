@@ -34,11 +34,7 @@ git clone https://github.com/gtfactslab/CrazySim.git --recursive
 ```
 
 ## crazyflie-lib-python
-The `SETUPTOOLS_SCM_PRETEND_VERSION` variable is needed because the submodule does not contain the git tags required by `setuptools_scm` to determine the package version automatically.
-```bash
-cd crazyflie-lib-python
-SETUPTOOLS_SCM_PRETEND_VERSION=0.1.31 pip install -e .
-```
+The official cflib now supports our udpdriver implementation as of [99ad0e3](https://github.com/bitcraze/crazyflie-lib-python/commit/99ad0e3e5be8ec717fd1b0fce0b7320e4acefe6e). Install the official cflib through the [official install instructions](https://github.com/bitcraze/crazyflie-lib-python/blob/master/docs/installation/install.md).
 
 ## crazyflie-clients-python [Optional]
 If you want to test a single Crazyflie with crazyflie-clients-python for SITL, then run the following commands in your terminal. If pip reinstalls cflib, then you may have to remove it and install from source above.
