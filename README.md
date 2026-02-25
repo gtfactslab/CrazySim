@@ -26,7 +26,7 @@ This code accompanies the work in the ICRA 2024 paper "CrazySim: A Software-in-t
 # CrazySim Setup
 
 ## Supported Platforms
-This simulator is currently only supported on Ubuntu systems with at least 20.04. This is primarily a requirement from Gazebo Sim. The simulator was built, tested, and verified on 22.04 with Gazebo Garden.
+This simulator is currently only supported on Ubuntu systems with at least Ubuntu 20.04 to 22.04. The simulator was built, tested, and verified on 22.04 with Gazebo Garden. The simulator will not work on Ubuntu 24.04 due to the FreeRTOS tasks blocking which likely is a result of kernel changes. If you have 24.04 you can use docker with 22.04 which has been verified to work.
 
 To install this repository use the recursive command as shown below for HTTPS:
 ```bash
