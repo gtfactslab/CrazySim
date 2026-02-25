@@ -2,10 +2,6 @@
 	path = crazyflie-firmware
 	url = https://github.com/llanesc/crazyflie-firmware.git
 	branch = crazysim
-[submodule "crazyflie-lib-python"]
-	path = crazyflie-lib-python
-	url = https://github.com/llanesc/crazyflie-lib-python.git
-	branch = crazysim
 [submodule "crazyswarm2_ws/src/crazyswarm2"]
 	path = crazyswarm2_ws/src/crazyswarm2
 	url = https://github.com/llanesc/crazyswarm2.git
