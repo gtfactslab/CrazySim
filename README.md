@@ -1,5 +1,5 @@
 # CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor
-This code accompanies the work in the ICRA 2024 paper "CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor" [1]. CrazySim is a simulator platform that runs Crazyflie firmware in a simulation state on a desktop machine with integrated communication with Gazebo sensors and physics engine. The simulated Crazyflie firmware is intended to communicate with a custom Crazyflie Python library ([CFLib](https://github.com/bitcraze/crazyflie-lib-python)) provided in this code. This enables simulating the behavior of CFLib scripts that are intended to control single or multiple Crazyflies in a real hardware demonstration. With CFLib communication capabilities, users can choose to use [CrazySwarm2](https://github.com/IMRCLab/crazyswarm2) with CFLib as the backend for a ROS 2 interface with the simulator. 
+This code accompanies the work in the ICRA 2024 paper "CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor" [1]. CrazySim is a simulator platform that runs Crazyflie firmware in a simulation state on a desktop machine with integrated communication with Gazebo sensors and physics engine. The simulated Crazyflie firmware is intended to communicate the Crazyflie Python library ([CFLib](https://github.com/bitcraze/crazyflie-lib-python)). This enables simulating the behavior of CFLib scripts that are intended to control single or multiple Crazyflies in a real hardware demonstration. With CFLib communication capabilities, users can choose to use [CrazySwarm2](https://github.com/IMRCLab/crazyswarm2) with CFLib as the backend for a ROS 2 interface with the simulator. 
 
 ![Architecture Diagram](https://github.com/user-attachments/assets/94f180aa-f7e7-42e8-b877-ce350958b0f1)
 
@@ -37,7 +37,7 @@ git clone https://github.com/gtfactslab/CrazySim.git --recursive
 The official cflib now supports our udpdriver implementation as of [99ad0e3](https://github.com/bitcraze/crazyflie-lib-python/commit/99ad0e3e5be8ec717fd1b0fce0b7320e4acefe6e). Install the official cflib through the [official install instructions](https://github.com/bitcraze/crazyflie-lib-python/blob/master/docs/installation/install.md).
 
 ## crazyflie-clients-python [Optional]
-If you want to test a single Crazyflie with crazyflie-clients-python for SITL, then run the following commands in your terminal. If pip reinstalls cflib, then you may have to remove it and install from source above.
+If you want to test a single Crazyflie with crazyflie-clients-python for SITL, then run the following commands in your terminal to install the cfclient.
 
 We have verified success with commit [`d649b66`](https://github.com/bitcraze/crazyflie-clients-python/commit/d649b6615a58ac0eb34aa72a4edef4c5d821eeab).
 ```bash
