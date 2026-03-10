@@ -112,7 +112,7 @@ bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_te
 
 ### MuJoCo
 
-[MuJoCo](https://mujoco.org/) does not require Gazebo. Drone models and parameters are provided by the [drone-models](https://github.com/utiasDSL/drone-models) submodule.
+[MuJoCo](https://mujoco.org/) does not require Gazebo and tends to run with better real-time performance. Drone models and parameters are provided by the [drone-models](https://github.com/utiasDSL/drone-models) submodule.
 
 #### MuJoCo Dependencies
 ```bash
