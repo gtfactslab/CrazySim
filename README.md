@@ -114,6 +114,10 @@ bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_te
 
 [MuJoCo](https://mujoco.org/) does not require Gazebo and tends to run with better real-time performance. Drone models and parameters are provided by the [drone-models](https://github.com/utiasDSL/drone-models) submodule.
 
+The MuJoCo backend includes aerodynamic effects from the drone-models `first_principles` model:
+- **Rotor drag**: velocity-dependent drag force using the `drag_matrix` from `params.toml` (F = R·D·R^T·v)
+- **Gyroscopic precession**: torque from the cross product of body angular velocity and net rotor angular momentum (τ = −ω × h_rotor)
+
 #### MuJoCo Dependencies
 ```bash
 pip install mujoco numpy
