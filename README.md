@@ -192,6 +192,12 @@ https://github.com/user-attachments/assets/dddfde8b-db91-4f7f-a71d-33254c3e40db
 ### PID Tuning Example
 One use case for simulating a crazyflie with the client is real time PID tuning. If you created a custom crazyflie with larger batteries, multiple decks, and upgraded motors, then it would be useful to tune the PIDs in a simulator platform before tuning live on hardware. An example of real time PID tuning is shown below.
 
+MujoCo
+
+https://github.com/user-attachments/assets/e7abb1c6-77c3-4ff5-81b7-611c88dacdda
+
+Gazebo
+
 https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/b865127c-1b0d-4f49-941d-e57aecda9a54
 
 
