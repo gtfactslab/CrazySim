@@ -25,8 +25,7 @@ This code accompanies the work in the ICRA 2024 paper "CrazySim: A Software-in-t
 
 # CrazySim Setup
 
-## Supported Platforms
-This simulator is currently only supported on Ubuntu systems with at least Ubuntu 20.04 to 22.04. The simulator was built, tested, and verified on 22.04 with Gazebo Garden. The simulator will not work on Ubuntu 24.04 due to the FreeRTOS tasks blocking which likely is a result of kernel changes. If you have 24.04 you can use docker with 22.04 which has been verified to work.
+## Installation
 
 To install this repository use the recursive command as shown below for HTTPS:
 ```bash
@@ -58,10 +57,7 @@ sudo apt install cmake build-essential
 pip install Jinja2
 ```
 
-#### Building the code
-First install Gazebo Garden from https://gazebosim.org/docs/garden/install_ubuntu
-
-Run the command to build the firmware and Gazebo plugins.
+### Building the firmware
 ```bash
 cd crazyflie-firmware
 mkdir -p sitl_make/build && cd $_
@@ -71,44 +67,93 @@ make all
 
 ## How to use
 
-### Start up SITL
+CrazySim supports two physics backends: **Gazebo** and **MuJoCo**. Both use the same SITL firmware and CFLib interface.
+
 Open a terminal and run
 ```bash
 cd crazyflie-firmware
 ```
 
-We can then run the firmware instance and spawn the models with Gazebo using a launch script. All launch scripts require a model argument `-m`. All currently implemented models are tabulated below.
+Then follow the instructions for your chosen backend below.
 
-| Models | Description |
+Connect with CFLib using URI `udp://0.0.0.0:19850`. For drone swarms increment the port for each additional drone.
+
+You can also test a single crazyflie using the cfclient if you installed it from the crazyflie-clients-python section. Click on the SITL checkbox, scan, and connect.
+
+---
+
+### Gazebo
+
+Install [Gazebo Garden](https://gazebosim.org/docs/garden/install_ubuntu) before building the firmware.
+
+#### Gazebo Models
+
+| Model | Description |
 | --- | --- |
 | crazyflie | The default Crazyflie 2.1. |
 | crazyflie_thrust_upgrade | The Crazyflie 2.1 with thrust upgrade bundle ([cf2x_T350](https://github.com/utiasDSL/drone-models) parameters). |
 
-#### Option 1: Spawning a single crazyflie model with initial position (x = 0, y = 0)
+#### Option 1: Single agent
 ```bash
 bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_singleagent.sh -m crazyflie -x 0 -y 0
 ```
 
-#### Option 2: Spawning 8 crazyflie models to form a perfect square
+#### Option 2: Multiple agents in a square formation
 ```bash
 bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_square.sh -n 8 -m crazyflie
 ```
 
-#### Option 3: Spawning multiple crazyflie models with positions defined in the *agents.txt* file. New vehicles are defined by adding a new line with comma deliminated initial position *x,y*.
+#### Option 3: Multiple agents from a coordinates file
 ```bash
 bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_text.sh -m crazyflie
 ```
 
-Now you can run any CFLib Python script with URI `udp://0.0.0.0:19850`. For drone swarms increment the port for each additional drone.
+---
 
-You can also test a single crazyflie using the custom client if you installed it from the crazyflie-clients-python section.
+### MuJoCo
 
-First start up the custom client.
+[MuJoCo](https://mujoco.org/) does not require Gazebo. Drone models and parameters are provided by the [drone-models](https://github.com/utiasDSL/drone-models) submodule.
+
+#### MuJoCo Dependencies
 ```bash
-cfclient
+pip install mujoco numpy
 ```
 
-Click on the SITL checkbox, scan, and connect. Once it's connected you can take off and fly using the command based flight controls.
+If on Python < 3.11, also install `tomli`:
+```bash
+pip install tomli
+```
+
+Initialize the drone-models submodule for mesh assets:
+```bash
+git submodule update --init tools/crazyflie-simulation/simulator_files/mujoco/drone-models
+```
+
+#### MuJoCo Models
+
+| Model | Description |
+| --- | --- |
+| cf2x_T350 | Crazyflie 2.x with Thrust upgrade kit (default) |
+| cf2x_L250 | Crazyflie 2.x Standard Configuration |
+| cf2x_P250 | Crazyflie 2.x Performance variant |
+| cf21B_500 | Crazyflie 2.1B Brushless |
+
+#### Option 1: Single agent
+```bash
+bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_singleagent.sh -m cf2x_T350 -x 0 -y 0
+```
+
+#### Option 2: Multiple agents in a square formation
+```bash
+bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_multiagent_square.sh -n 8 -m cf2x_T350
+```
+
+#### Option 3: Multiple agents from a coordinates file
+```bash
+bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_multiagent_text.sh -m cf2x_T350
+```
+
+---
 
 ### PID Tuning Example
 One use case for simulating a crazyflie with the client is real time PID tuning. If you created a custom crazyflie with larger batteries, multiple decks, and upgraded motors, then it would be useful to tune the PIDs in a simulator platform before tuning live on hardware. An example of real time PID tuning is shown below.
