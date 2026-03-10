@@ -1,5 +1,5 @@
 # CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor
-This code accompanies the work in the ICRA 2024 paper "CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor" [1]. CrazySim is a simulator platform that runs Crazyflie firmware in a simulation state on a desktop machine with integrated communication with Gazebo sensors and physics engine. The simulated Crazyflie firmware is intended to communicate with a custom Crazyflie Python library ([CFLib](https://github.com/bitcraze/crazyflie-lib-python)) provided in this code. This enables simulating the behavior of CFLib scripts that are intended to control single or multiple Crazyflies in a real hardware demonstration. With CFLib communication capabilities, users can choose to use [CrazySwarm2](https://github.com/IMRCLab/crazyswarm2) with CFLib as the backend for a ROS 2 interface with the simulator. 
+This code accompanies the work in the ICRA 2024 paper "CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor" [1]. CrazySim is a simulator platform that runs Crazyflie firmware in a simulation state on a desktop machine with integrated communication with Gazebo sensors and physics engine. The simulated Crazyflie firmware is intended to communicate with crazyflie-lib-python ([cflib](https://github.com/bitcraze/crazyflie-lib-python)). This enables simulating the behavior of CFLib scripts that are intended to control single or multiple Crazyflies in a real hardware demonstration. With CFLib communication capabilities, users can choose to use [CrazySwarm2](https://github.com/IMRCLab/crazyswarm2) with CFLib as the backend for a ROS 2 interface with the simulator. 
 
 ![Architecture Diagram](https://github.com/user-attachments/assets/94f180aa-f7e7-42e8-b877-ce350958b0f1)
 
@@ -26,7 +26,7 @@ This code accompanies the work in the ICRA 2024 paper "CrazySim: A Software-in-t
 # CrazySim Setup
 
 ## Supported Platforms
-This simulator is currently only supported on Ubuntu systems with at least 20.04. This is primarily a requirement from Gazebo Sim. The simulator was built, tested, and verified on 22.04 with Gazebo Garden.
+This simulator is currently only supported on Ubuntu systems with at least Ubuntu 20.04 to 22.04. The simulator was built, tested, and verified on 22.04 with Gazebo Garden. The simulator will not work on Ubuntu 24.04 due to the FreeRTOS tasks blocking which likely is a result of kernel changes. If you have 24.04 you can use docker with 22.04 which has been verified to work.
 
 To install this repository use the recursive command as shown below for HTTPS:
 ```bash
@@ -34,14 +34,10 @@ git clone https://github.com/gtfactslab/CrazySim.git --recursive
 ```
 
 ## crazyflie-lib-python
-The `SETUPTOOLS_SCM_PRETEND_VERSION` variable is needed because the submodule does not contain the git tags required by `setuptools_scm` to determine the package version automatically.
-```bash
-cd crazyflie-lib-python
-SETUPTOOLS_SCM_PRETEND_VERSION=0.1.31 pip install -e .
-```
+The official cflib now supports our udpdriver implementation as of [99ad0e3](https://github.com/bitcraze/crazyflie-lib-python/commit/99ad0e3e5be8ec717fd1b0fce0b7320e4acefe6e). Install the official cflib through the [official install instructions](https://github.com/bitcraze/crazyflie-lib-python/blob/master/docs/installation/install.md).
 
 ## crazyflie-clients-python [Optional]
-If you want to test a single Crazyflie with crazyflie-clients-python for SITL, then run the following commands in your terminal. If pip reinstalls cflib, then you may have to remove it and install from source above.
+If you want to test a single Crazyflie with crazyflie-clients-python for SITL, then run the following commands in your terminal to install the cfclient.
 
 We have verified success with commit [`d649b66`](https://github.com/bitcraze/crazyflie-clients-python/commit/d649b6615a58ac0eb34aa72a4edef4c5d821eeab).
 ```bash
