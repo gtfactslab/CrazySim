@@ -105,7 +105,7 @@ bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_sq
 
 #### Option 3: Multiple agents from a coordinates file
 ```bash
-bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_text.sh -m crazyflie
+bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_text.sh -m crazyflie -f single_origin.txt
 ```
 
 ---
@@ -150,8 +150,23 @@ bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_multiagent_sq
 
 #### Option 3: Multiple agents from a coordinates file
 ```bash
-bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_multiagent_text.sh -m cf2x_T350
+bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_multiagent_text.sh -m cf2x_T350 -f single_origin.txt
 ```
+
+---
+
+### Coordinates File Format
+
+The `-f` flag specifies a coordinates file from `crazyflie-firmware/tools/crazyflie-simulation/drone_spawn_list/`. Each line contains an X,Y spawn position in CSV format:
+
+```
+0.0,0.0
+1.0,0.0
+0.0,1.0
+1.0,1.0
+```
+
+A default `single_origin.txt` file is included. To create your own, add a new `.txt` file to the `drone_spawn_list/` directory.
 
 ---
 
