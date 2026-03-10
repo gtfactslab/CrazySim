@@ -168,6 +168,21 @@ The `-f` flag specifies a coordinates file from `crazyflie-firmware/tools/crazyf
 
 A default `single_origin.txt` file is included. To create your own, add a new `.txt` file to the `drone_spawn_list/` directory.
 
+#### 8-Drone Circling Demo (MuJoCo)
+
+Launch 8 drones using the `circling_square.txt` spawn file:
+```bash
+bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_multiagent_text.sh -m cf2x_T350 -f circling_square.txt -M 0.0379
+```
+
+Then in another terminal, run the circling square demo script:
+```bash
+cd crazyflie-lib-python/examples/autonomy
+python3 circling_square_demo_sitl.py
+```
+
+The demo script uses URIs `udp://0.0.0.0:19850` through `udp://0.0.0.0:19857` for 8 drones. If you change the number of drones, update the `uris` list in the script accordingly.
+
 ---
 
 ### PID Tuning Example
