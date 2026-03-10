@@ -183,6 +183,10 @@ python3 circling_square_demo_sitl.py
 
 The demo script uses URIs `udp://0.0.0.0:19850` through `udp://0.0.0.0:19857` for 8 drones. If you change the number of drones, update the `uris` list in the script accordingly.
 
+
+https://github.com/user-attachments/assets/dddfde8b-db91-4f7f-a71d-33254c3e40db
+
+
 ---
 
 ### PID Tuning Example
