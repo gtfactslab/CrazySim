@@ -206,6 +206,12 @@ https://github.com/user-attachments/assets/PLACEHOLDER_MULTIRANGER_VIDEO
 
 ---
 
+### LED Ring
+
+The SITL firmware includes an LED ring deck driver that sends LED RGB data to the simulator. The MuJoCo backend renders these colors in real-time on the drone's `led_top` and `led_bot` materials in the viewer. LED RGB values set from cflib or cfclient are reflected in the simulation.
+
+---
+
 ### PID Tuning Example
 One use case for simulating a crazyflie with the client is real time PID tuning. If you created a custom crazyflie with larger batteries, multiple decks, and upgraded motors, then it would be useful to tune the PIDs in a simulator platform before tuning live on hardware. An example of real time PID tuning is shown below.
 
