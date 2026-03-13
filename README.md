@@ -202,7 +202,8 @@ bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_singleagent.s
 
 This can be demonstrated using the `multiranger_pointcloud.py` example from [crazyflie-lib-python](https://github.com/bitcraze/crazyflie-lib-python/blob/master/examples/multiranger/multiranger_pointcloud.py), which renders a real-time 3D point cloud while allowing manual flight control via keyboard. To use it with SITL, change the URI to `udp://0.0.0.0:19850` as with the other examples.
 
-https://github.com/user-attachments/assets/PLACEHOLDER_MULTIRANGER_VIDEO
+https://github.com/user-attachments/assets/f1377d12-ce14-4be9-8d28-07209eee7b6c
+
 
 ---
 
