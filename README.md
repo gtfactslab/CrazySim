@@ -219,10 +219,6 @@ MujoCo
 
 https://github.com/user-attachments/assets/e7abb1c6-77c3-4ff5-81b7-611c88dacdda
 
-Gazebo
-
-https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/b865127c-1b0d-4f49-941d-e57aecda9a54
-
 
 
 
