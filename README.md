@@ -193,6 +193,19 @@ https://github.com/user-attachments/assets/dddfde8b-db91-4f7f-a71d-33254c3e40db
 
 ---
 
+### Multiranger
+
+The MuJoCo backend supports the Multi-ranger deck, providing simulated ToF range sensors (front, back, left, right, up). An obstacle scene is included and can be loaded with the `-s` flag:
+```bash
+bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_singleagent.sh -m cf2x_T350 -x 0 -y 0 -s scene_obstacles.xml
+```
+
+This can be demonstrated using the `multiranger_pointcloud.py` example from [crazyflie-lib-python](https://github.com/bitcraze/crazyflie-lib-python/blob/master/examples/multiranger/multiranger_pointcloud.py), which renders a real-time 3D point cloud while allowing manual flight control via keyboard. To use it with SITL, change the URI to `udp://0.0.0.0:19850` as with the other examples.
+
+https://github.com/user-attachments/assets/PLACEHOLDER_MULTIRANGER_VIDEO
+
+---
+
 ### PID Tuning Example
 One use case for simulating a crazyflie with the client is real time PID tuning. If you created a custom crazyflie with larger batteries, multiple decks, and upgraded motors, then it would be useful to tune the PIDs in a simulator platform before tuning live on hardware. An example of real time PID tuning is shown below.
 
