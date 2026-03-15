@@ -76,7 +76,7 @@ cd crazyflie-firmware
 
 Then follow the instructions for your chosen backend below.
 
-Connect with CFLib using URI `udp://0.0.0.0:19850`. For drone swarms increment the port for each additional drone.
+Connect with CFLib using URI `udp://127.0.0.1:19850`. For drone swarms increment the port for each additional drone.
 
 You can also test a single crazyflie using the cfclient if you installed it from the crazyflie-clients-python section. Click on the SITL checkbox, scan, and connect.
 
@@ -185,7 +185,7 @@ cd crazyflie-lib-python/examples/autonomy
 python3 circling_square_demo.py
 ```
 
-Before running, update the `uris` list in the script to use SITL UDP URIs (`udp://0.0.0.0:19850` through `udp://0.0.0.0:19857` for 8 drones).
+Before running, update the `uris` list in the script to use SITL UDP URIs (`udp://127.0.0.1:19850` through `udp://127.0.0.1:19857` for 8 drones).
 
 
 https://github.com/user-attachments/assets/dddfde8b-db91-4f7f-a71d-33254c3e40db
@@ -200,9 +200,10 @@ The MuJoCo backend supports the Multi-ranger deck, providing simulated ToF range
 bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_singleagent.sh -m cf2x_T350 -x 0 -y 0 -s scene_obstacles.xml
 ```
 
-This can be demonstrated using the `multiranger_pointcloud.py` example from [crazyflie-lib-python](https://github.com/bitcraze/crazyflie-lib-python/blob/master/examples/multiranger/multiranger_pointcloud.py), which renders a real-time 3D point cloud while allowing manual flight control via keyboard. To use it with SITL, change the URI to `udp://0.0.0.0:19850` as with the other examples.
+This can be demonstrated using the `multiranger_pointcloud.py` example from [crazyflie-lib-python](https://github.com/bitcraze/crazyflie-lib-python/blob/master/examples/multiranger/multiranger_pointcloud.py), which renders a real-time 3D point cloud while allowing manual flight control via keyboard. To use it with SITL, change the URI to `udp://127.0.0.1:19850` as with the other examples.
 
-https://github.com/user-attachments/assets/PLACEHOLDER_MULTIRANGER_VIDEO
+https://github.com/user-attachments/assets/f1377d12-ce14-4be9-8d28-07209eee7b6c
+
 
 ---
 
@@ -218,10 +219,6 @@ One use case for simulating a crazyflie with the client is real time PID tuning.
 MujoCo
 
 https://github.com/user-attachments/assets/e7abb1c6-77c3-4ff5-81b7-611c88dacdda
-
-Gazebo
-
-https://github.com/gtfactslab/Llanes_ICRA2024/assets/40842920/b865127c-1b0d-4f49-941d-e57aecda9a54
 
 
 
@@ -252,25 +249,25 @@ For the following demo make the following adjustments to the ***robots*** and **
 robots:
   cf_1:
       enabled: true
-      uri: udp://0.0.0.0:19850
+      uri: udp://127.0.0.1:19850
       initial_position: [0.0, 0.0, 0.0]
       type: cf_sim
 
   cf_2:
     enabled: true
-    uri: udp://0.0.0.0:19851
+    uri: udp://127.0.0.1:19851
     initial_position: [1.0, 0.0, 0.0]
     type: cf_sim
 
   cf_3:
     enabled: true
-    uri: udp://0.0.0.0:19852
+    uri: udp://127.0.0.1:19852
     initial_position: [0.0, 1.0, 0.0]
     type: cf_sim 
 
   cf_4:
     enabled: true
-    uri: udp://0.0.0.0:19853
+    uri: udp://127.0.0.1:19853
     initial_position: [1.0, 1.0, 0.0]
     type: cf_sim
 
