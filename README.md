@@ -207,9 +207,9 @@ https://github.com/user-attachments/assets/f1377d12-ce14-4be9-8d28-07209eee7b6c
 
 ---
 
-### LED Ring
+### Color LEDs (Top & Bottom)
 
-The SITL firmware includes an LED ring deck driver that sends LED RGB data to the simulator. The MuJoCo backend renders these colors in real-time on the drone's `led_top` and `led_bot` materials in the viewer. LED RGB values set from cflib or cfclient are reflected in the simulation.
+The SITL firmware includes color LED deck drivers (`bcColorLedTop` and `bcColorLedBot`) that send RGB data to the simulator independently for the top and bottom LEDs. The MuJoCo backend renders these colors in real-time on the drone's `led_top` and `led_bot` materials and adds point light sources so the LEDs illuminate the surrounding scene. A headlight is also supported and rendered as a forward-facing spot light. LED RGB values set from cflib or cfclient are reflected in the simulation. A `scene_dark.xml` scene is provided to best visualize the LED lighting effects.
 
 ---
 
