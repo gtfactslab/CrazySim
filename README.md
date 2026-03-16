@@ -172,6 +172,14 @@ The `-f` flag specifies a coordinates file from `crazyflie-firmware/tools/crazyf
 
 A default `single_origin.txt` file is included. To create your own, add a new `.txt` file to the `drone_spawn_list/` directory.
 
+---
+
+#### Color LEDs (Top & Bottom)
+
+The SITL firmware includes color LED deck drivers (`bcColorLedTop` and `bcColorLedBot`) that send RGB data to the simulator independently for the top and bottom LEDs. The MuJoCo backend renders these colors in real-time on the drone's `led_top` and `led_bot` materials and adds point light sources so the LEDs illuminate the surrounding scene. A headlight is also supported and rendered as a forward-facing spot light. LED RGB values set from cflib or cfclient are reflected in the simulation. A `scene_dark.xml` scene is provided to best visualize the LED lighting effects.
+
+---
+
 #### 8-Drone Circling Demo (MuJoCo)
 
 Launch 8 drones using the `circling_square.txt` spawn file:
@@ -188,12 +196,11 @@ python3 circling_square_demo.py
 Before running, update the `uris` list in the script to use SITL UDP URIs (`udp://127.0.0.1:19850` through `udp://127.0.0.1:19857` for 8 drones).
 
 
-https://github.com/user-attachments/assets/dddfde8b-db91-4f7f-a71d-33254c3e40db
-
+https://github.com/user-attachments/assets/c5d08c86-e879-4121-aecf-5adb6c083b6c
 
 ---
 
-### Multiranger
+#### Multiranger
 
 The MuJoCo backend supports the Multi-ranger deck, providing simulated ToF range sensors (front, back, left, right, up). An obstacle scene is included and can be loaded with the `-s` flag:
 ```bash
@@ -207,13 +214,7 @@ https://github.com/user-attachments/assets/f1377d12-ce14-4be9-8d28-07209eee7b6c
 
 ---
 
-### Color LEDs (Top & Bottom)
-
-The SITL firmware includes color LED deck drivers (`bcColorLedTop` and `bcColorLedBot`) that send RGB data to the simulator independently for the top and bottom LEDs. The MuJoCo backend renders these colors in real-time on the drone's `led_top` and `led_bot` materials and adds point light sources so the LEDs illuminate the surrounding scene. A headlight is also supported and rendered as a forward-facing spot light. LED RGB values set from cflib or cfclient are reflected in the simulation. A `scene_dark.xml` scene is provided to best visualize the LED lighting effects.
-
----
-
-### PID Tuning Example
+#### PID Tuning Example
 One use case for simulating a crazyflie with the client is real time PID tuning. If you created a custom crazyflie with larger batteries, multiple decks, and upgraded motors, then it would be useful to tune the PIDs in a simulator platform before tuning live on hardware. An example of real time PID tuning is shown below.
 
 MujoCo
