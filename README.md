@@ -82,11 +82,11 @@ You can also test a single crazyflie using the cfclient if you installed it from
 
 ---
 
-### Gazebo
+## Gazebo
 
 Install [Gazebo Garden](https://gazebosim.org/docs/garden/install_ubuntu) before building the firmware.
 
-#### Gazebo Models
+### Gazebo Models
 
 | Model | Description |
 | --- | --- |
@@ -110,7 +110,7 @@ bash tools/crazyflie-simulation/simulator_files/gazebo/launch/sitl_multiagent_te
 
 ---
 
-### MuJoCo
+## MuJoCo
 
 [MuJoCo](https://mujoco.org/) does not require Gazebo and tends to run with better real-time performance. Drone models and parameters are provided by the [drone-models](https://github.com/utiasDSL/drone-models) submodule.
 
@@ -118,7 +118,7 @@ The MuJoCo backend includes aerodynamic effects from the drone-models `first_pri
 - **Rotor drag**: velocity-dependent drag force using the `drag_matrix` from `params.toml`
 - **Gyroscopic precession**: torque from body angular velocity and net rotor angular momentum
 
-#### MuJoCo Dependencies
+### MuJoCo Dependencies
 ```bash
 pip install mujoco numpy
 ```
@@ -133,7 +133,7 @@ Initialize the drone-models submodule for mesh assets:
 git submodule update --init tools/crazyflie-simulation/simulator_files/mujoco/drone-models
 ```
 
-#### MuJoCo Models
+### MuJoCo Models
 
 | Model | Description |
 | --- | --- |
@@ -141,6 +141,9 @@ git submodule update --init tools/crazyflie-simulation/simulator_files/mujoco/dr
 | cf2x_L250 | Crazyflie 2.x Standard Configuration |
 | cf2x_P250 | Crazyflie 2.x Performance variant |
 | cf21B_500 | Crazyflie 2.1B Brushless |
+
+### Launch Scripts
+Several launch scripts are included to simplify startup.
 
 #### Option 1: Single agent
 ```bash
@@ -174,13 +177,13 @@ A default `single_origin.txt` file is included. To create your own, add a new `.
 
 ---
 
-#### Color LEDs (Top & Bottom)
+### Color LEDs (Top & Bottom)
 
 The SITL firmware includes color LED deck drivers (`bcColorLedTop` and `bcColorLedBot`) that send RGB data to the simulator independently for the top and bottom LEDs. The MuJoCo backend renders these colors in real-time on the drone's `led_top` and `led_bot` materials and adds point light sources so the LEDs illuminate the surrounding scene. A headlight is also supported and rendered as a forward-facing spot light. LED RGB values set from cflib or cfclient are reflected in the simulation. A `scene_dark.xml` scene is provided to best visualize the LED lighting effects.
 
 ---
 
-#### 8-Drone Circling Demo (MuJoCo)
+### 8-Drone Circling Demo (MuJoCo)
 
 Launch 8 drones using the `circling_square.txt` spawn file:
 ```bash
@@ -200,7 +203,7 @@ https://github.com/user-attachments/assets/c5d08c86-e879-4121-aecf-5adb6c083b6c
 
 ---
 
-#### Multiranger
+### Multiranger
 
 The MuJoCo backend supports the Multi-ranger deck, providing simulated ToF range sensors (front, back, left, right, up). An obstacle scene is included and can be loaded with the `-s` flag:
 ```bash
@@ -214,7 +217,7 @@ https://github.com/user-attachments/assets/f1377d12-ce14-4be9-8d28-07209eee7b6c
 
 ---
 
-#### PID Tuning Example
+### PID Tuning Example
 One use case for simulating a crazyflie with the client is real time PID tuning. If you created a custom crazyflie with larger batteries, multiple decks, and upgraded motors, then it would be useful to tune the PIDs in a simulator platform before tuning live on hardware. An example of real time PID tuning is shown below.
 
 MujoCo
