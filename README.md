@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/crazysim_logo.svg" alt="CrazySim Logo" width="440"/>
+</p>
+
 # CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor
 This code accompanies the work in the ICRA 2024 paper "CrazySim: A Software-in-the-Loop Simulator for the Crazyflie Nano Quadrotor" [1]. CrazySim is a simulator platform that runs Crazyflie firmware in a simulation state on a desktop machine with integrated communication with Gazebo sensors and physics engine. The simulated Crazyflie firmware is intended to communicate with crazyflie-lib-python ([cflib](https://github.com/bitcraze/crazyflie-lib-python)). This enables simulating the behavior of CFLib scripts that are intended to control single or multiple Crazyflies in a real hardware demonstration. With CFLib communication capabilities, users can choose to use [CrazySwarm2](https://github.com/IMRCLab/crazyswarm2) with CFLib as the backend for a ROS 2 interface with the simulator. 
 
