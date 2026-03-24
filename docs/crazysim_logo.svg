@@ -39,9 +39,7 @@
   <circle cx="140" cy="155" r="2" fill="#0f0" opacity="0.8"/>
 
   <!-- === TEXT at top of screen === -->
-  <text x="140" y="52" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="22" font-weight="bold" letter-spacing="1">
-    <tspan fill="#e0e0e0">Crazy</tspan><tspan fill="#00dcc8" filter="url(#glow)">Sim</tspan>
-  </text>
+  <text x="87" y="52" font-family="Consolas, 'Courier New', monospace" font-size="22" font-weight="bold" fill="#e0e0e0">Crazy</text><text x="152" y="52" font-family="Consolas, 'Courier New', monospace" font-size="22" font-weight="bold" fill="#00dcc8" filter="url(#glow)">Sim</text>
 
   <!-- Subtle tagline -->
   <text x="140" y="68" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="8" fill="#ccc" letter-spacing="2">
