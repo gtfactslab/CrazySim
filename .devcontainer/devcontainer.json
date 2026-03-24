@@ -1,0 +1,31 @@
+{
+    "name": "CrazySim Ubuntu 22.04 + Gazebo Garden",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "runArgs": [
+        "--network=host",
+        "--privileged",
+        "--gpus=all",
+        "--device=/dev/dri",
+        "--device=/dev/bus/usb"
+    ],
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind",
+        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind"
+    ],
+    "containerEnv": {
+        "DISPLAY": "${localEnv:DISPLAY}",
+        "QT_X11_NO_MITSHM": "1"
+    },
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-python.python"
+            ]
+        }
+    },
+    "postCreateCommand": "bash -c 'cd /workspace/crazyflie-lib-python && SETUPTOOLS_SCM_PRETEND_VERSION=0.1.31 pip3 install -e . && echo \"Dev container ready!\"'"
+}
