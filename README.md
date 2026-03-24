@@ -248,6 +248,7 @@ Terminal 2:
 ```bash
 python3 crazyflie-lib-python/examples/aideck/fpv.py tcp://127.0.0.1:5050
 ```
+<img width="1457" height="600" alt="Screenshot from 2026-03-23 17-05-29" src="https://github.com/user-attachments/assets/b95e4f5a-3dc1-4c6c-9408-89bc4d6cdbd0" />
 
 ---
 
