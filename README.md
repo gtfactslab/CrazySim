@@ -37,7 +37,7 @@ git clone https://github.com/gtfactslab/CrazySim.git --recursive
 ```
 
 ## crazyflie-lib-python
-The official cflib now supports our udpdriver implementation as of [99ad0e3](https://github.com/bitcraze/crazyflie-lib-python/commit/99ad0e3e5be8ec717fd1b0fce0b7320e4acefe6e). Install the official cflib through the [official install instructions](https://github.com/bitcraze/crazyflie-lib-python/blob/master/docs/installation/install.md).
+The official cflib now supports our udpdriver implementation as of [99ad0e3](https://github.com/bitcraze/crazyflie-lib-python/commit/99ad0e3e5be8ec717fd1b0fce0b7320e4acefe6e). Install the official cflib from source using the [official install instructions](https://github.com/bitcraze/crazyflie-lib-python/blob/master/docs/installation/install.md). For now source is the only option because pip install will install the latest release which is 0.1.31 which was before this implementation was pushed.
 
 ## crazyflie-clients-python [Optional]
 If you want to test a single Crazyflie with crazyflie-clients-python for SITL, then run the following commands in your terminal to install the cfclient.
