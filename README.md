@@ -225,16 +225,7 @@ https://github.com/user-attachments/assets/f1377d12-ce14-4be9-8d28-07209eee7b6c
 
 The MuJoCo backend supports simulated AI-deck camera streaming using the CPX protocol. A companion script `crazysim_cpx.py` emulates the ESP32 WiFi bridge, allowing unmodified cflib AI-deck scripts (e.g. `fpv.py`) to receive camera frames from the simulator exactly as they would from real hardware.
 
-```
-┌──────────┐       ┌──────────────┐       ┌──────────────┐       ┌──────────┐
-│  fpv.py  │ CPX   │ crazysim_cpx │ CRTP  │  crazysim.py │  UDP  │ firmware │
-│ (cflib)  │◄─TCP─►│   (ESP32)    │◄─UDP─►│  cflib port  │◄─────►│  (cf2)   │
-│          │ :5050 │              │ :19850│              │ :19950│          │
-└──────────┘       │              │       │              │       └──────────┘
-                   │              │  UDP  │  MuJoCo      │
-                   │              │◄──────│  camera render│
-                   └──────────────┘ :5200 └──────────────┘
-```
+![CrazySim AI-Deck Camera SITL Architecture](docs/crazysim_cpx_architecture.png)
 
 **How it works:**
 - `crazysim.py` renders the drone's FPV camera using MuJoCo's offscreen renderer, converts to grayscale (matching the Himax HM01B0 sensor), and sends frames via UDP to `crazysim_cpx.py`
@@ -303,6 +294,18 @@ Constant wind field with optional stochastic gusts and Dryden turbulence:
 # 2 m/s wind from +X with moderate turbulence
 bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_singleagent.sh \
     --wind-speed 2 --wind-direction 0 --turbulence moderate
+```
+
+#### Flowdeck (`--flowdeck`)
+
+Simulates the Bitcraze Flow deck v2 sensors:
+- **VL53L1x TOF rangefinder** — downward-facing distance measurement using MuJoCo raycasting (`mj_ray`) at 40 Hz with the hardware-matching exponential noise model from `zranger2.c`
+- **PMW3901 optical flow** — pixel displacement computed from body-frame velocity, height, and angular rate at 100 Hz, matching the UKF's `computeOutputFlow` model (Npix=30, thetapix=4.2 deg, omegaFactor=1.25)
+
+When `--flowdeck` is enabled, external pose packets are suppressed so the estimator runs on TOF + flow only, the same as real hardware with a Flow deck. The pose code remains intact and is used when `--flowdeck` is not passed.
+
+```bash
+bash tools/crazyflie-simulation/simulator_files/mujoco/launch/sitl_singleagent.sh --flowdeck
 ```
 
 #### Combining Features
