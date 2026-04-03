@@ -1,4 +1,6 @@
 .vscode/
+.devcontainer/
+.claude/
 
 # Ignore crazyswarm2_ws build artifacts, keep src
 crazyswarm2_ws/*
